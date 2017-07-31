@@ -1,0 +1,156 @@
+@charset "utf-8";
+
+#wrap {
+  width:1250px;
+  margin:0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; 
+}
+
+body {
+  background: #ffeeee;
+  color: #660000;
+  font-family:'lucida grande',verdana,helvetica,arial,sans-serif;
+  font-size:90%;
+  margin: 0;
+}
+ 
+
+#header {
+  background-color:#660000;
+  color:#FFFFFF;
+  border-bottom:1px solid #990000;
+  padding:10px 20px 10px 20px;
+  width: 1210px;
+}
+
+h1 {
+  color:#660000;
+  font-size:18pt;
+}
+
+#wrapper {
+  flex: 1;
+  display: flex;
+  
+}
+
+
+#left {
+  width: 0px;
+  background: #ffeeee;
+  padding: 5px;
+  margin:10px 0px 10px 0px;
+}
+
+#right {
+  width: 0px;
+  background: #ffeeee;
+  padding: 5px;
+  margin:10px 0px 10px 0px;
+}
+
+#content {
+  padding: 5px;
+  margin:10px 0px 10px 0px;
+  flex:1;  
+  width:856px;
+}
+
+#footer {
+  height:100px;
+  width: 960px;
+} 
+ 
+table {
+  width:1200px;
+}
+td {
+  padding: 2px 5px 2px 5px;
+  background-color: #FFFFFF;
+  color:#660000;
+  border: #ffeeee solid 2px;
+ 
+}
+pre {
+  background-color: #FFFFFF;
+  padding:5px 10px 5px 10px;
+  margin:10px 20px 10px 20px;
+}
+
+
+
+li {
+  color: white;
+  float:left;
+  list-style-type:none;
+  margin-right:30px;
+  font-size:200%;
+}
+
+
+a {
+  text-decoration: none;
+  color: #660000;
+  float:left;
+  list-style-type:none;
+  font-size:100%;
+
+}
+
+#header-left {
+  color: white;
+  margin-right:40px;
+  font-size:120%;
+}
+
+
+#header-right {
+  color: white;
+  font-size:100%;
+}
+
+form {
+  font-size:150%;
+  transform-style: none;
+  border: none;
+}
+
+fieldset legend {
+  font-size: 180%;
+  font-weight: bold;
+  border-style: none;
+}
+
+/* username password */
+input, textarea {
+  font-size: 130%;
+  padding: 1%;
+  width:98%;
+}
+
+/* role */
+select {
+  font-size: 120%;
+  width: 100%;
+  padding: 1%;
+}
+
+
+/* 送信  */
+
+input[type=submit] {
+ /* display: inline; */
+  font-size: 140%;
+  width: 90px;
+  float: right;
+}
+
+/* 管理ユーザー登録  */
+fieldset {
+/*  外枠  */  
+  border-style: none;
+}
+
+
