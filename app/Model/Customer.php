@@ -4,11 +4,11 @@ App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
 
 class Customer extends AppModel {
 	
-     public $belongsTo = array(
+//    public $belongsTo = array(
 //customersテーブル(モデル)だけじゃなく
-     	'Lin','Contract','Agent','State'
+//    	'Lin','Contract','Agent','State'
 //条件を指定せずにLin,Contract,Agent,Stateテーブル(モデル)のデータを全部引っ張ってる
-    );
+//    );
 
     
 

@@ -8,20 +8,81 @@ class CustomersController extends AppController {
 
 	public $layout = 'customerLayout';
 
+	public $uses = [
+		'Contract',
+		'Customer',
+		];
+
 //	var $uses = array('Customer', 'Lin');
 
 	public function index() {
 
-		$options = array(
-            'conditions' => array(
-                  'Customer.deleted' => 0
-            )
+		// $options = array(
+  //           'conditions' => array(
+  //                 'Customer.deleted' => 0
+  //           )
+		// );
 
-		);
-		$data = $this->Customer->find('all');
-//var_dump($data);exit;
+		$fields = [
+			'Customer.id',
+			'Customer.name',
+			'Lin.type',
+			'C.type',
+			'A.type',
+			'S.type'
+		];
+
+		$conditions = [
+			'Customer.deleted' => 0
+		];
+
+		$joins = [
+			[
+				'type' => 'LEFT',
+			    'table' => 'lins',
+			    'alias' => 'Lin',
+			    'conditions' => 'Customer.lin_id = Lin.id',
+			],
+			[
+				'type' => 'LEFT',
+				'table' => 'contracts',
+				'alias' => 'C',
+				'conditions' => 'Customer.contract_id = C.id'
+			],
+			[   
+			    'type' => 'LEFT',
+			    'table' => 'agents',
+			    'alias' => 'A',
+			    'conditions' => 'Customer.agent_id = A.id'
+			],
+			[
+                'type' => 'LEFT',
+                'table' => 'states',
+                'alias' => 'S',
+                'conditions' => 'Customer.state_id = S.id'
+			]
+		];
+
+		// $recursive = -1;
+
+		// compact('field','conditions','joins','recursive');
+
+		// $options = [
+		// 	0 => $field,
+		// 	1 => $condition,
+		// 	2 => $joins,
+		// 	3 => $recursive
+		// ];
+
+		$data = $this->Customer->find('all',compact('fields','conditions','joins','recursive'));
+		var_dump($data);
+
+		$contracts = $this->Contract->find('all');
+// var_dump($data);exit;
 
 		$this->set('customers', $data);
+
+		$this->set('contracts', $contracts);
 
 
 //		$this->set('customers', $this->Customer->find('all', $options));

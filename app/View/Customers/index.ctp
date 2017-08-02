@@ -22,9 +22,9 @@
        <td><?php echo $customer['Customer']['id']; ?></td>
        <td><?php echo $customer['Customer']['name']; ?></td>
        <td><?php echo $customer['Lin']['type'];?></td>
-       <td><?php echo $customer['Contract']['type']; ?></td>
-       <td><?php echo $customer['Agent']['type']; ?></td>
-       <td><?php echo $customer['State']['type']; ?></td>
+       <td><?php echo $customer['C']['type']; ?></td>
+       <td><?php echo $customer['A']['type']; ?></td>
+       <td><?php echo $customer['S']['type']; ?></td>
        <td><?php echo $customer['Customer']['contract_day']; ?></td>
        <td><span><?php echo $this->Html->link('編集',
 array('controller' => 'customers', 'action' => 'edit', $customer['Customer']['id'])); ?></span></td>

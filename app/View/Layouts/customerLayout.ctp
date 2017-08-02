@@ -39,15 +39,9 @@
  <li>Type-A</li>
  <li>Type-D</li>
 <p>契約タイプ</p>
- <li>データのみ3GB</li>
- <li>データのみ6GB</li>
- <li>データのみ10GB</li>
- <li>SMS付き3GB</li>
- <li>SMS付き6GB</li>
- <li>SMS付き10GB</li>
- <li>音声通話プラン3GB</li>
- <li>音声通話プラン6GB</li>
- <li>音声通話プラン10GB</li>
+<?php foreach($contracts as $contract) :?>
+ <li><?php echo $contract['Contract']['type']; ?></li>
+<?php endforeach; ?>
 <p>代理店</p>
  <li>ヒトコム</li>
  <li>ビッグカメラ</li>
