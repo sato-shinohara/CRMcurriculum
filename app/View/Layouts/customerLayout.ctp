@@ -36,17 +36,17 @@
 <p>各種情報</p>
 <ul>
 <p>回線タイプ</p>
- <li>Type-A</li>
- <li>Type-D</li>
+<?php foreach($lins as $lin) :?>
+ <li><?php echo $lin['Lin']['type']; ?></li>
+<?php endforeach; ?>
 <p>契約タイプ</p>
 <?php foreach($contracts as $contract) :?>
  <li><?php echo $contract['Contract']['type']; ?></li>
 <?php endforeach; ?>
 <p>代理店</p>
- <li>ヒトコム</li>
- <li>ビッグカメラ</li>
- <li>ヨドバシカメラ</li>
- <li>ヤマダ電機</li> 
+<?php foreach($agents as $agent): ?>
+ <li><?php echo $agent['Agent']['type']; ?></li>
+<?php endforeach; ?> 
 </ul>
 </div>
 <div id="content">

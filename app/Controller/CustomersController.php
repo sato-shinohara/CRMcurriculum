@@ -6,16 +6,22 @@ class CustomersController extends AppController {
 
 	public $components = array('Flash');
 
-	public $layout = 'customerLayout';
+//	public $layout = 'customerLayout';
 
 	public $uses = [
+//CustomersController の中で使うtable を宣言する
 		'Contract',
 		'Customer',
+		'Lin',
+		'State',
+		'Agent',
 		];
 
-//	var $uses = array('Customer', 'Lin');
-
 	public function index() {
+
+	$layout = 'customerLayout';	
+
+	$this->layout = $layout;
 
 		// $options = array(
   //           'conditions' => array(
@@ -24,6 +30,8 @@ class CustomersController extends AppController {
 		// );
 
 		$fields = [
+//どのレコードをとってくるのか指定する
+//'*'を使ってしまうと全てのtableの全レコードが引っ張られ、膨大な数で、とても時間かかる		
 			'Customer.id',
 			'Customer.name',
 			'Lin.type',
@@ -41,6 +49,7 @@ class CustomersController extends AppController {
 				'type' => 'LEFT',
 			    'table' => 'lins',
 			    'alias' => 'Lin',
+        //aliasとは、別名という意味			    
 			    'conditions' => 'Customer.lin_id = Lin.id',
 			],
 			[
@@ -63,7 +72,10 @@ class CustomersController extends AppController {
 			]
 		];
 
-		// $recursive = -1;
+		$recursive = -1;
+	//$recursive = 0 で１つのテーブルと紐付いている状態
+	//$recursive = -1 でどのテーブルとも紐付いてない状態 
+	//$joins を使う場合は余計なテーブルとの紐づけを解消するためによく使われる	
 
 		// compact('field','conditions','joins','recursive');
 
@@ -75,14 +87,27 @@ class CustomersController extends AppController {
 		// ];
 
 		$data = $this->Customer->find('all',compact('fields','conditions','joins','recursive'));
-		var_dump($data);
+		//第二引数に条件をオプションでいれてる
+
+	//	var_dump($data);
 
 		$contracts = $this->Contract->find('all');
 // var_dump($data);exit;
+        $lins = $this->Lin->find('all');
+
+        $states = $this->State->find('all');
+
+        $agents = $this->Agent->find('all');
 
 		$this->set('customers', $data);
 
 		$this->set('contracts', $contracts);
+
+		$this->set('lins', $lins);
+
+		$this->set('states', $states);
+
+		$this->set('agents', $agents);
 
 
 //		$this->set('customers', $this->Customer->find('all', $options));
@@ -90,6 +115,10 @@ class CustomersController extends AppController {
 	}
 
 	public function edit($id) {
+        $layout = 'sampleLayout';
+
+        $this->layout = $layout;
+
 		if (!$id) {
 
 			throw new NotFoundException(__('このidはありません'));
@@ -121,7 +150,11 @@ class CustomersController extends AppController {
 		}
 	}
 
-		public function add() {
+	public function add() {
+	    $layout = 'sampleLayout';
+
+        $this->layout = $layout;
+
        
         if ($this->request->is('post')) {
             $this->Customer->create();
